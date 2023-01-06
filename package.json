@@ -4,8 +4,11 @@
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.18.6",
+    "@playwright/test": "^1.29",
     "@preconstruct/cli": "^2.3.0",
-    "typescript": "^4.9.4"
+    "@sveltejs/kit": "^1.0",
+    "typescript": "^4.9.4",
+    "vite": "^4.0"
   },
   "name": "sveltekit-playwright-fetch-mock",
   "version": "1.0.0",
@@ -17,5 +20,13 @@
   "license": "MIT",
   "files": [
     "dist"
-  ]
+  ],
+  "dependencies": {
+    "node-fetch": "^3.3.0"
+  },
+  "peerDependencies": {
+    "@playwright/test": "^1.29",
+    "@sveltejs/kit": "^1.0.0",
+    "vite": "^4.0"
+  }
 }
