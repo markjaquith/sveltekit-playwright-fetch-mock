@@ -1,3 +1,3 @@
-export * as handle from './src/handle'
-export * as handleFetch from './src/handleFetch'
-export * as mockFetch from './src/mockFetch'
+export { default as handle } from "./src/handle";
+export { default as handleFetch } from "./src/handleFetch";
+export { default as mockFetch } from "./src/mockFetch";
