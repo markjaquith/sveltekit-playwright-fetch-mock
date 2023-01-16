@@ -1,5 +1,11 @@
 # sveltekit-playwright-fetch-mock
 
+## 0.4.0
+
+### Minor Changes
+
+- 22bcdd1: Change to type: module
+
 ## 0.3.2
 
 ### Patch Changes
