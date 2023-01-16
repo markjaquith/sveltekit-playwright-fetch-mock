@@ -1,5 +1,11 @@
 # sveltekit-playwright-fetch-mock
 
+## 0.5.0
+
+### Minor Changes
+
+- e11ded3: Remove node-fetch requirement
+
 ## 0.4.0
 
 ### Minor Changes
