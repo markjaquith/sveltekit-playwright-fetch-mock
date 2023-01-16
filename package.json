@@ -19,6 +19,7 @@
 	"main": "dist/index.js",
 	"module": "dist/index.mjs",
 	"types": "dist/index.d.ts",
+	"type": "module",
 	"repository": "git@github.com:markjaquith/sveltekit-playwright-fetch-mock.git",
 	"author": "Mark Jaquith <mark@jaquith.me>",
 	"license": "MIT",
