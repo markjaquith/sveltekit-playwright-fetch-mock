@@ -1,8 +1,6 @@
-import type { Handle } from '@sveltejs/kit'
 import { Headers } from 'node-fetch'
 import type { Page } from '@playwright/test'
-
-const COOKIE_NAME = 'mockFetch'
+import { COOKIE_NAME } from './handle'
 
 type MockResponseData = {
 	status: number
@@ -12,46 +10,6 @@ type MockResponseData = {
 }
 
 type Mocks = Record<string, MockResponseData>
-
-type Locals = {
-	isPlaywright: boolean
-	fetchMocks: Mocks
-}
-
-function isPlaywright(locals: Partial<Locals>): boolean {
-	return !!locals.isPlaywright
-}
-
-const handle = (async ({ event, resolve }) => {
-	if (isPlaywright(event.locals)) {
-		event.locals.fetchMocks = JSON.parse(event.cookies.get('mockFetch') ?? '{}')
-	}
-
-	return resolve(event)
-}) satisfies Handle
-
-export function handleFetch(request: Request, locals: Locals): Response | null {
-	if (locals.fetchMocks) {
-		try {
-			Object.entries(locals.fetchMocks).forEach(([pattern, response]) => {
-				if (request.url.match(new RegExp(pattern))) {
-					throw new Response(response.body ?? '', {
-						status: response.status ?? 200,
-						statusText: response.statusText ?? 'OK',
-						headers: response.headers ?? {},
-					})
-				}
-			})
-		} catch (response) {
-			if (!(response instanceof Response)) {
-				throw response
-			}
-			return response
-		}
-	}
-
-	return null
-}
 
 export default async function playwrightMockServerFetch(
 	page: Page,
@@ -84,5 +42,3 @@ export default async function playwrightMockServerFetch(
 		},
 	])
 }
-
-export { handle }

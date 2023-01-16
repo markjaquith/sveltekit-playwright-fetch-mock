@@ -1,32 +1,32 @@
 {
-  "scripts": {
-    "postinstall": "preconstruct dev"
-  },
-  "devDependencies": {
-    "@babel/preset-typescript": "^7.18.6",
-    "@playwright/test": "^1.29",
-    "@preconstruct/cli": "^2.3.0",
-    "@sveltejs/kit": "^1.0",
-    "typescript": "^4.9.4",
-    "vite": "^4.0"
-  },
-  "name": "sveltekit-playwright-fetch-mock",
-  "version": "1.0.0",
-  "description": "Tools for mocking SSR fetch() requests in SvelteKit for use in Playwright",
-  "main": "dist/sveltekit-playwright-fetch-mock.cjs.js",
-  "module": "dist/sveltekit-playwright-fetch-mock.esm.js",
-  "repository": "git@github.com:markjaquith/sveltekit-playwright-fetch-mock.git",
-  "author": "Mark Jaquith <mark@jaquith.me>",
-  "license": "MIT",
-  "files": [
-    "dist"
-  ],
-  "dependencies": {
-    "node-fetch": "^3.3.0"
-  },
-  "peerDependencies": {
-    "@playwright/test": "^1.29",
-    "@sveltejs/kit": "^1.0.0",
-    "vite": "^4.0"
-  }
+	"scripts": {
+		"build": "tsup index.ts --format cjs,esm --dts",
+		"lint": "tsc"
+	},
+	"devDependencies": {
+		"@babel/preset-typescript": "^7.18.6",
+		"@changesets/cli": "^2.26.0",
+		"@playwright/test": "^1.29",
+		"@sveltejs/kit": "^1.0",
+		"tsup": "^6.5.0",
+		"typescript": "^4.9.4",
+		"vite": "^4.0"
+	},
+	"name": "sveltekit-playwright-fetch-mock",
+	"version": "0.1.0",
+	"description": "Tools for mocking SSR fetch() requests in SvelteKit for use in Playwright",
+	"main": "dist/index.js",
+	"module": "dist/index.mjs",
+	"types": "dist/index.d.ts",
+	"repository": "git@github.com:markjaquith/sveltekit-playwright-fetch-mock.git",
+	"author": "Mark Jaquith <mark@jaquith.me>",
+	"license": "MIT",
+	"dependencies": {
+		"node-fetch": "^3.3.0"
+	},
+	"peerDependencies": {
+		"@playwright/test": "^1.29",
+		"@sveltejs/kit": "^1.0.0",
+		"vite": "^4.0"
+	}
 }
