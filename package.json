@@ -1,6 +1,7 @@
 {
 	"scripts": {
 		"build": "tsup index.ts --format cjs,esm --dts",
+		"release": "tsup index.ts --format cjs,esm --dts && changeset publish",
 		"lint": "tsc"
 	},
 	"devDependencies": {
