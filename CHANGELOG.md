@@ -1,5 +1,11 @@
 # sveltekit-playwright-fetch-mock
 
+## 0.3.2
+
+### Patch Changes
+
+- 201aa99: Add a yarn release command
+
 ## 0.3.1
 
 ### Patch Changes
