@@ -1,1 +1,0 @@
-import { handleFetch } from '../index'
