@@ -1,5 +1,11 @@
 # sveltekit-playwright-fetch-mock
 
+## 0.5.2
+
+### Patch Changes
+
+- ff50660: Update Playwright TypeScript import
+
 ## 0.5.0
 
 ### Minor Changes
