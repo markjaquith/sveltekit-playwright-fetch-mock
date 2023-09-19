@@ -43,7 +43,7 @@ export default async function playwrightMockServerFetch(
 			name: COOKIE_NAME,
 			value: JSON.stringify(mocks),
 			domain: "localhost",
-			path: "/stay/",
+			path: "/",
 			expires: 1707508488,
 		},
 	]);
