@@ -6,9 +6,68 @@ Playwright already lets you mock browser `fetch()` requests. This allows you to 
 
 This can speed up your end-to-end tests and make them more reliable, as well as not require credentials for external APIs to be input to your continuous integration environment.
 
+## Installation
+
+`npm i sveltekit-playwright-fetch-mock`
+
 ## Usage
 
-In your Playwright test:
+`src/hooks.server.ts`
+
+```ts
+import type { HandleFetch, Handle } from '@sveltejs/kit'
+import { sequence } from '@sveltejs/kit/hooks'
+import {
+	handle as handleHttpMocks,
+	handleFetch as handleMockedResponses,
+} from 'sveltekit-playwright-fetch-mock'
+import { PUBLIC_LOCAL } from '$env/static/public'
+
+export const handle = sequence(
+	handleHttpMocks(PUBLIC_LOCAL === '1'),
+) satisfies Handle
+
+export const handleFetch = (async ({ request, fetch, event }) => {
+	const mockedResponse = handleMockedResponses(request, event)
+
+	if (mockedResponse) {
+		return mockedResponse
+	}
+
+	return fetch(request)
+}) satisfies HandleFetch
+
+```
+
+In your local and CI environments, add `PUBLIC_LOCAL=1` to your environment.
+
+This is what tells the mock code to be active. You can name this however you like, if you also change the reference in `src/hooks.server.ts` to match it.
+
+`src/app.d.ts`
+
+```ts
+type FetchMocks = Record<
+	string,
+	{
+		status: number
+		statusText: string
+		headers?: Record<string, string>
+		body: string
+	}
+>
+
+declare namespace App {
+	// interface Error {}
+	interface Locals {
+		fetchMocks: FetchMocks
+		isPlaywright: boolean
+	}
+	// interface PageData {}
+	// interface Platform {}
+}
+```
+
+And finally in your Playwright test:
 
 ```ts
 import { expect, test } from '@playwright/test'
