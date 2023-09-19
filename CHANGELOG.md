@@ -1,5 +1,12 @@
 # sveltekit-playwright-fetch-mock
 
+## 0.5.3
+
+### Patch Changes
+
+- a7a7ede: Fix incorrectly hardcoded path
+- e1ccfbd: Provide example in README
+
 ## 0.5.2
 
 ### Patch Changes
